@@ -1,0 +1,29 @@
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (uncomment if needed)
+# local.properties
+
+# Signing files
+.signing/
+
+# Android Studio
+.idea/
+*.iml
+
+# Log files
+*.log
+
+# Android specific files
+*.apk
+*.ap_
+*.dex
+
+# Temporary files
+*.tmp
+*.temp
+
+# System files
+.DS_Store
+Thumbs.db
