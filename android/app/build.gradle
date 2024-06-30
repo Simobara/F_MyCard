@@ -1,3 +1,10 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android' 
+    id 'kotlin-android-extensions' 
+    id 'kotlin-kapt'
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -14,11 +21,10 @@ if (flutterRoot == null) {
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode') ?: '1'
 def flutterVersionName = localProperties.getProperty('flutter.versionName') ?: '1.0'
 
-apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     lintOptions {
         disable 'InvalidPackage'
@@ -27,14 +33,18 @@ android {
     defaultConfig {
         applicationId "co.appbrewery.micard"
         minSdkVersion flutter.minSdkVersion
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            // Replace 'debug' with your release signing config
+            // signingConfig signingConfigs.release
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -44,5 +54,6 @@ flutter {
 }
 
 dependencies {
-    // Aggiungi qui le tue dipendenze
+    // Aggiungi qui le tue dipendenze necessarie
 }
+
